@@ -1,6 +1,6 @@
 ## SQL
 
-View the following diagrams created in [WWW SQL Designer](http://ondras.zarovi.cz/sql/demo/), and fill in `sql-publisher-author-genre.js` with the schemas that are appropriate for the following data with the specified relationships:
+View the following example diagrams created in [WWW SQL Designer](http://ondras.zarovi.cz/sql/demo/?keyword=default), and fill in `sql-publisher-author-genre.js` with the schemas that are appropriate for the following data with the specified relationships:
 
   * publisher, has many authors, has one genre
   * author, has many publishers, has many genres
