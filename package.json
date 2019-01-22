@@ -1,0 +1,15 @@
+{
+  "name": "self-assessments-week-04",
+  "version": "1.0.0",
+  "description": "## Guidelines",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha sql-publisher-author-genre/ async-word-count/ node-req-count/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
