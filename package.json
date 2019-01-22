@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "## Guidelines",
   "scripts": {
-    "test": "./node_modules/.bin/mocha sql-publisher-author-genre/ async-word-count/ node-req-count/"
+    "test": "mocha \"./**/*.test.js\" --exit"
   },
   "keywords": [],
   "author": "",
