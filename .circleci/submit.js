@@ -24,7 +24,7 @@ exec('npm test | grep -E \"[0-9]+\\s(passing|failing)\"', (err, stdout1, stderr)
     exec('echo "$airtable_api_key"', (err, apikey) => {
         const options = {
             hostname: 'api.airtable.com',
-            path: '/v0/app8kEq9wXlsuffDy/Sprint',
+            path: '/v0/app8kEq9wXlsuffDy/Self%20Assessment',
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
