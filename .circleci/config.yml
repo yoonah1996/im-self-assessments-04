@@ -33,7 +33,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       
-      - run: cd node-req-cout && npm install
+      - run: cd node-req-count && npm install
 
       # run tests!
       - run: npm test
