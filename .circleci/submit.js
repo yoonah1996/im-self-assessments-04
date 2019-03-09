@@ -3,12 +3,9 @@ const https = require('https');
 
 // Get sutdent data from student.json
 let studentInfo = require('../student.json')
-let {theClass, students, sprint} = studentInfo
+let {theClass, student, sprint} = studentInfo
 
-students = students.replace(/ +/g, "");
-let studentsArray = students.split(",")
-
-console.log(theClass, studentsArray, sprint)
+console.log(theClass, student, sprint)
 
 exec('npm test | grep -E \"[0-9]+\\s(passing|failing)\"', (err, stdout1, stderr) => {
     if (err) {
@@ -17,11 +14,20 @@ exec('npm test | grep -E \"[0-9]+\\s(passing|failing)\"', (err, stdout1, stderr)
 
     // Get test result from the console and cleasing it for spread sheet
     let matchWithPassing = stdout1.match(/([.\d,]+)[ ]+passing/)
-    let matchWithFaling = stdout1.match(/([.\d,]+)[ ]+failing/)
+    let matchWithFailing = stdout1.match(/([.\d,]+)[ ]+failing/)
     let passing = matchWithPassing ? Number(matchWithPassing[1]) : 0
-    let faling = matchWithFaling ? Number(matchWithFaling[1]) : 0
+    let failing = matchWithFailing ? Number(matchWithFailing[1]) : 0
 
     exec('echo "$airtable_api_key"', (err, apikey) => {
+        if (err) {
+            console.log(err);
+            throw new Error("echo command did not work right");
+        }
+    
+        if (apikey === "\n") {
+            throw new Error("There is not the airtable_api_key");
+        }
+
         const options = {
             hostname: 'api.airtable.com',
             path: '/v0/app8kEq9wXlsuffDy/Self%20Assessment',
@@ -32,30 +38,36 @@ exec('npm test | grep -E \"[0-9]+\\s(passing|failing)\"', (err, stdout1, stderr)
             }
         };
         console.log(JSON.stringify(options.headers));
-
-        studentsArray.forEach(student => {
-            const req = https.request(options, (res) => {
-                res.on('data', (chunk) => {
-                    console.log(chunk.toString());
-              // callback(null, result);
-                });
-            });
+        let data;
     
-            req.on('error', (e) => {
-                throw new Error('data did not send to airtable correctlu')
-                // callback(new Error('failure'));
+        const req = https.request(options, (res) => {
+            res.on("data", chunk => {
+                data += chunk;
+                // callback(null, result);
             });
-            // send the request
-            req.write(JSON.stringify({
-                'fields': {
-                    'class': theClass,
-                    'name':student,
-                    'sprint': sprint,
-                    'passing': passing,
-                    'failing': faling,
+        
+            res.on("end", () => {
+                console.log(data);
+                if (data.includes("error")) {
+                throw new Error("There is an error on response from airtable.");
                 }
-            }));
-            req.end();
-        })
+            });
+        });
+    
+        req.on('error', (e) => {
+            throw new Error('data did not send to airtable correctlu')
+            // callback(new Error('failure'));
+        });
+        // send the request
+        req.write(JSON.stringify({
+            'fields': {
+                'class': theClass,
+                'name':student,
+                'sprint': sprint,
+                'passing': passing,
+                'failing': failing,
+            }
+        }));
+        req.end();
     })
-});
+})
