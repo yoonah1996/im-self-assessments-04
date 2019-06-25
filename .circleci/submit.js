@@ -64,8 +64,8 @@ exec('npm test | grep -E \"[0-9]+\\s(passing|failing)\"', (err, stdout1, stderr)
                 'class': theClass,
                 'name':student,
                 'sprint': sprint,
-                'passing': passing,
-                'failing': failing,
+                'passed': passing,
+                'failed': failing,
             }
         }));
         req.end();
