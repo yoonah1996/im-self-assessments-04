@@ -11,30 +11,17 @@
   - 팁: 커밋하기전에 예상한것처럼 코드가 작동하는지 쉽게 테스트할 수 있는 크롬 Console, [JSFiddle](https://jsfiddle.net/) 같은 도구를 활용하세요.
 
 - 모든 문제를 최소한 조금이라도 풀려고 시도하세요. 문제에 아무 시도도 하지않고 작업했던 흔적이 없는것보다 코멘트를 몇줄이라도 작성하던가 pseudo-code 를 작성하는게 훨씬 더 좋습니다.
-- 제 시간에 맞춰 pull request 를 꼭 제출하세요. 끝나기 최소한 몇분전에 pull request 를 할 시간을 가지세요.
+- 제 시간에 맞춰 `npm run report-test` 및 `npm run submit` 을 꼭 해주세요.
 - Assessment 를 마친후에 본인이 생각하기에 잘 이해하지 못한 문제들이 있다고 생각하면, 그 주제에 대해 더 학습할 시간을 가능한 빨리 가지세요.
-
-## Grading Outline
-
-- [ ] async-word-count
-- [ ] sql-publisher-author-genre
-- [ ] node-express-sequelize
 
 ## Using and Referencing Outside Resources
 
 매 문제마다 참고가능한 외부 자료들에 대해서 안내하고 있습니다. Assessment 시간 동안은 언급된 자료 이외의 이전 학습자료, 온라인 자료를 참고하거나 다른 학생들과 의견을 교환하는 것은 금지하고 있습니다. 문제에 대해 궁금한 부분이 있으신 경우에는 help-desk 를 이용해주세요.
 
-## Self-Grading Process
-
-문제들을 다 푼 이후에 Grading Scale 을 참고해서 각각 문제의 Grading Outline 을 pull request 를 보낼때 코멘트에 작성해주세요.
-
 ## Submitting Solutions
 
-[Pull Request](https://help.github.com/articles/using-pull-requests). 를 사용해 최종 제출합니다. 아래의 단계를 따라주세요.:
-
-1. 여러분의 fork 에서 Pull Requests 를 선택하고, New pull request 를 생성합니다.
-2. Pull Request 의 comment block 에 Grading Outline 을 채워넣고 복사해 붙입니다. Grading Scale 참고
-3. `Send pull request` 를 클릭합니다.
+- `npm run report-test` 명령어를 통해 테스트 결과 값을 업데이트 합니다.
+- `npm run submit` 명령어를 통해 테스트 결과 값을 제출합니다.
 
 ---
 
